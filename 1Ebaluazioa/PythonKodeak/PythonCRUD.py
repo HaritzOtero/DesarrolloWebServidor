@@ -26,7 +26,6 @@ def opcion1():
         print(fila)
 
 def opcion2():
-    print("Opción 2 seleccionada")
 
     izena = input("Sartu erabiltzailearen izena eta abizena: ")
     dni = input("Sartu erabiltzailearen NAN: ")
@@ -39,17 +38,17 @@ def opcion2():
         print(fila)
 
 def opcion3():
-    print("Opción 3 seleccionada")
+    dni = input("Sartu erabiltzailearen NAN: ")
+    mycursor.execute("DELETE FROM users WHERE DNI='"+ dni +"'")
+    print("Erabiltzailea ezabatu da.")
     # Coloca aquí el código para la opción 3
 
 def opcion4():
-    print("Opción 4 seleccionada")
     # Coloca aquí el código para la opción 4
-
-def opcion5():
-    print("Opción 4 seleccionada")
-    # Coloca aquí el código para la opción 4
-
+    dni = input("Sartu aldatu nahi dozun erabiltzailearen NAN-a: ")
+    dniNuevo = input("Sartu erabiltzaileari jarri nahi diozun NAN berria: ")
+    izena = input("Sartu erabiltzaileari jarri nahi diozun izen berria: ")
+    mycursor.execute("UPDATE users SET izena = '" + izena +"', DNI = '" + dniNuevo +"' WHERE DNI ='" + dni +"';")
 def salir():
     print("Saliendo del programa")
     exit()
@@ -58,10 +57,9 @@ while True:
     print("**** Erabiltzaile menua ****")
     print("1. Ikusi erabiltzaile guztiak")
     print("2. Erabiltzaile berria sartu")
-    print("3. Erabiltzailea eguneratu")
-    print("4. Erabiltzailea ezabatu")
+    print("3. Erabiltzailea ezabatu")
+    print("4. Erabiltzailea eguneratu")
     print("5. Salir")
-    print("6. Salir")
 
     opcion = input("Seleccione una opción: ")
 
@@ -74,9 +72,8 @@ while True:
     elif opcion == "4":
         opcion4()
     elif opcion == "5":
-        opcion5()
-    elif opcion == "6":
         salir()
+
     else:
         print("Opción no válida. Por favor, seleccione una opción válida.")
 
