@@ -5,18 +5,23 @@ import random
 pygame.init()
 ancho, alto = 640, 480
 pantalla = pygame.display.set_mode((ancho, alto))
+pygame.display.set_caption("Snake Game")
 reloj = pygame.time.Clock()
 
 # Colores
 negro = (0, 0, 0)
 verde = (0, 255, 0)
 rojo = (255, 0, 0)
+blanco = (255, 255, 255)
 
 # Inicialización de variables
 serpiente = [(100, 50), (90, 50), (80, 50)]
 serpiente_dir = (10, 0)
 comida = (random.randrange(1, ancho // 10) * 10, random.randrange(1, alto // 10) * 10)
 puntuacion = 0
+
+# Fuente de texto
+fuente = pygame.font.Font(None, 36)
 
 # Función para dibujar la serpiente y la comida
 def dibujar_serpiente(serpiente):
@@ -25,6 +30,10 @@ def dibujar_serpiente(serpiente):
 
 def dibujar_comida(comida):
     pygame.draw.rect(pantalla, rojo, pygame.Rect(comida[0], comida[1], 10, 10))
+
+def mostrar_puntuacion(puntuacion):
+    texto = fuente.render(f"Puntuación: {puntuacion}", True, blanco)
+    pantalla.blit(texto, (10, 10))
 
 # Bucle principal del juego
 while True:
@@ -73,11 +82,11 @@ while True:
     dibujar_serpiente(serpiente)
     dibujar_comida(comida)
 
+    # Mostrar la puntuación
+    mostrar_puntuacion(puntuacion)
+
     # Actualizar pantalla
     pygame.display.flip()
 
     # Controlar la velocidad del juego
     reloj.tick(10)
-
-pygame.quit()
-quit()
