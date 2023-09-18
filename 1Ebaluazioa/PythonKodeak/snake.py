@@ -19,6 +19,8 @@ serpiente = [(100, 50), (90, 50), (80, 50)]
 serpiente_dir = (10, 0)
 comida = (random.randrange(1, ancho // 10) * 10, random.randrange(1, alto // 10) * 10)
 puntuacion = 0
+velocidad = 10  # Velocidad inicial de la serpiente
+contador_puntuacion = 0
 
 # Fuente de texto
 fuente = pygame.font.Font(None, 36)
@@ -60,7 +62,13 @@ while True:
     # Comprobar si la serpiente ha comido la comida
     if serpiente[0] == comida:
         puntuacion += 1
+        contador_puntuacion += 1
         comida = (random.randrange(1, ancho // 10) * 10, random.randrange(1, alto // 10) * 10)
+
+        # Aumentar la velocidad cada 5 puntos
+        if contador_puntuacion % 5 == 0:
+            velocidad += 1
+
     else:
         serpiente.pop()
 
@@ -89,4 +97,4 @@ while True:
     pygame.display.flip()
 
     # Controlar la velocidad del juego
-    reloj.tick(10)
+    reloj.tick(velocidad)
