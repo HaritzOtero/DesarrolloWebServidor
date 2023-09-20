@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href='{%static "css/blog.css" %}'>
+    <title>NIRE Django BLOG</title>
+</head>
+<body>
+    <center><h1>Kaixo django blog</h1></center>
+    <br>
+
+    {% for post in posta %}
+    <div>
+        <p><h2>{{post.izenburua}}</h2></p>
+        <p>{{post.edukia}}</p>
+    </div>
+
+    {% endfor %}
+    
+    <a href="/add">Gehitu posta</a>
+
+</body>
+</html>
