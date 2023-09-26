@@ -9,6 +9,4 @@ urlpatterns = [
     path ('ezabatu/<int:id>/', views.deletepost, name='ezabatu'),
     path('aldatu/<int:id>/', views.aldatu),
     path ('aldatupost/<int:id>/', views.aldatupost),
-    path ('addAuthor/', views.add, name='addAuthor'),
-    path ('add/addAuthorPost/', views.addpost, name='addAuthorPost'),
 ]

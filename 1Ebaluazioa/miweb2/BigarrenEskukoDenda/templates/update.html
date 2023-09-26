@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href='{%static "css/blog.css" %}'>
+    <title>Sartu datu berriak</title>
+</head>
+<body>
+    <center><h1>Sartu datu berriak</h1></center>
+    <br>
+
+    
+    <form action="/aldatupost/{{posta.id}}/" method="post">
+        {% csrf_token %}
+        Post-aren izenbrua: <input type="text" name="jokoIzena" value="{{posta.jokoIzena}} ">
+        Post-aren deskripzioa: <input type="text" name="deskripzioa" value="{{posta.deskripzioa}}">
+        Post-aren prezioa: <input type="int" name="prezioa" value="{{posta.prezioa}}">
+        Post-aren prezioa: <input type="int" name="author" value="{{posta.author}}">
+        <button type = submit>Post-a sortu</button>
+    </form>
+    
+</body>
+</html>

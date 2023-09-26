@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href='{%static "css/blog.css" %}'>
+    <title>NIRE Django BLOG</title>
+</head>
+<body>
+    <center><h1>Autore bat gehitzeko formularioa bete: </h1></center>
+    <br>
+
+    
+    <form action="addAuthorPost/" method="post">
+        {% csrf_token %}
+        Izena: <input type="text" name="izenburua">
+        Abizena: <input type="text" name="edukia">
+        Jaiotza data: <input type="date" name="jaiotzaData">
+        Gmail: <input type="email" name="gmail">
+        <button type = submit>Erregistratu</button>
+    </form>
+    
+</body>
+</html>
