@@ -14,12 +14,12 @@
     <br>
 
     
-    <form action="addpost/" method="post">
+    <form action="addpostAuthor/" method="post">
         {% csrf_token %}
-        Jokoaren izena: <input type="text" name="jokoIzena">
-        Deskripzioa: <input type="text" name="deskripzioa">
-        Prezioa: <input type="text" name="prezioa">
-        Autorea: <input type="text" name="author">
+        Autorearen izena: <input type="text" name="izenAbizenak">
+        Jaiotze data: <input type="date" name="jaiotzaData">
+        Gmail: <input type="text" name="gmail">
+
         <button type = submit>Post-a sortu</button>
     </form>
     

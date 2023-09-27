@@ -11,8 +11,7 @@ class Post(models.Model):
         return self.izenburua
 
 class Author(models.Model):
-    izena = models.CharField(max_length=100)
-    abizena = models.CharField(max_length=100)
+    izenAbizenak = models.CharField(max_length=100)
     jaiotzaData = models.DateField(auto_now_add=False, blank=True)
     gmail = models.EmailField(max_length=100)
 

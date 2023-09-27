@@ -18,40 +18,30 @@
     <br>
 
     <table align ="center" border="1">
-        {% for post in posta %}
+        {% for author in autoreak %}
         <tr>
             <td>
 
                 <div>
-                    <h2>{{post.id}}</h2>
+                    <h2>{{author.id}}</h2>
                     <p>
-                    <h2>{{post.jokoIzena}}</h2>
+                    <h2>{{author.izenAbizenak}}</h2>
                     </p>
-                    <p>{{post.deskripzioa}}</p>
+                    <p>{{author.jaiotzaData}}</p>
                 </p>
-                <p>{{post.prezioa}}</p>
+                <p>{{post.gmail}}</p>
             </p>
-            <p>{{post.author}}</p>
-
                 </div>
 
 
             </td>
             <td>
-                <a href="ezabatu/{{post.id}}" color="red">Ezabatu</a>
-            </td>
-            <td>
-                <a href="aldatu/{{post.id}}" color="red">Aldatu</a>
+                <a href="ezabatuAutorea/{{author.id}}" color="red">Ezabatu</a>
             </td>
         </tr>
         {% endfor %}
     </table>
-
-
-
-    <a href="add/">Gehitu posta</a>
-    <a href="authors/">Ikusi autoreak</a>
-
+    <a href="addAuthor/">Gehitu autorea</a>
 </body>
 
 </html>

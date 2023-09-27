@@ -7,8 +7,24 @@ def index(request):
     postak = Post.objects.all
     return render(request, 'index.html', {'posta': postak})
 
+def authors(request):
+    autoreak = Author.objects.all
+    return render(request, 'autoreak.html', {'author': autoreak})
+
 def add(request):
     return render(request, 'add.html')
+
+def addAuthor(request):
+     return render(request, 'addAuthor.html')
+
+def addpostAuthor(request):
+    iz = request.POST["izenAbizenak"]
+    jaiotzaData = request.POST["jaiotzaData"]
+    gmail = request.POST["gmail"]
+
+    autoreberria = Author(izenAbizenak = iz, jaiotzaData=jaiotzaData, gmail = gmail)
+
+    autoreberria.save()
 
 def addpost(request):
     iz = request.POST["jokoIzena"]
@@ -24,6 +40,12 @@ def addpost(request):
 def deletepost(request, id):
     ezabatzekopost = Post.objects.get(id = id) #izenburua pasatu eta bilatu izenburu hori duen objetua
     Post.delete(ezabatzekopost) #ezabatu
+
+    return HttpResponseRedirect(reverse(index))
+
+def deleteAuthor(request, id):
+    ezabatzekoautorea = Author.objects.get(id = id) #izenburua pasatu eta bilatu izenburu hori duen objetua
+    Author.delete(ezabatzekoautorea) #ezabatu
 
     return HttpResponseRedirect(reverse(index))
 
