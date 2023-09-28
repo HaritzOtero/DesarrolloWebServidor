@@ -9,6 +9,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href='{%static "css/blog.css" %}'>
     <title>NIRE Django BLOG</title>
+    <style>
+        /* Reset de estilos para eliminar márgenes y espaciado predeterminado */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo del fondo de la página */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo del encabezado principal */
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        /* Estilo de la tabla */
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo de las filas impares de la tabla */
+        table tr:nth-child(odd) {
+            background-color: #f5f5f5;
+        }
+
+        /* Estilo de las celdas de la tabla */
+        table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        /* Estilo de los enlaces "Ezabatu" y "Aldatu" */
+        a {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: red;
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        /* Estilo de los enlaces "Gehitu posta" y "Ikusi autoreak" */
+        a[href="addAuthor/"] {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            margin: 20px auto;
+            width: 150px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,30 +83,27 @@
     </center>
     <br>
 
-    <table align ="center" border="1">
-        {% for author in autoreak %}
+    <table align="center" border="1">
+        {% for author in authors %}  <!-- Cambia 'autoreak' a 'authors' -->
         <tr>
             <td>
-
                 <div>
-                    <h2>{{author.id}}</h2>
-                    <p>
-                    <h2>{{author.izenAbizenak}}</h2>
-                    </p>
-                    <p>{{author.jaiotzaData}}</p>
-                </p>
-                <p>{{post.gmail}}</p>
-            </p>
+                    <h2>{{ author.id }}</h2>
+                    <p><h2>{{ author.izenAbizenak }}</h2></p>
+                    <p>{{ author.jaiotzaData }}</p>
+                    <p>{{ author.gmail }}</p>
                 </div>
-
-
             </td>
             <td>
-                <a href="ezabatuAutorea/{{author.id}}" color="red">Ezabatu</a>
+                <a href="ezabatuAutorea/{{ author.id }}">Ezabatu</a>  <!-- Cambia 'color' a 'style' -->
+            </td>
+            <td>
+                <a href="aldatuAuthor/{{ author.id }}">Aldatu</a>  <!-- Cambia 'color' a 'style' -->
             </td>
         </tr>
         {% endfor %}
     </table>
+    
     <a href="addAuthor/">Gehitu autorea</a>
 </body>
 

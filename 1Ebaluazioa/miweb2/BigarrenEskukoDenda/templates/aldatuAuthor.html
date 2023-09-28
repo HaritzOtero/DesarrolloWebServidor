@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href='{%static "css/blog.css" %}'>
-    <title>NIRE Django BLOG</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Sartu datu berriak</title>
     <style>
         /* Reset de estilos para eliminar márgenes y espaciado predeterminado */
         * {
@@ -50,7 +51,8 @@
         /* Estilo de campos de entrada de formulario */
         form input[type="text"],
         form input[type="int"],
-        form select {
+        form input[type="email"],
+        form input[type="date"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -71,33 +73,35 @@
             transition: background-color 0.3s;
         }
 
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
         /* Cambio de color del botón al pasar el cursor por encima */
         form button[type="submit"]:hover {
             background-color: #555;
         }
     </style>
+
 </head>
 
 <body>
     <center>
-        <h1>Post bat gehitzeko ondorengo formularioa bate:</h1>
+        <h1>Sartu datu berriak</h1>
     </center>
     <br>
 
 
-    <form action="addpost/" method="post">
+    <form action="aldatuAuthorPost/" method="post" id="authorForm">
         {% csrf_token %}
-        Jokoaren izena: <input type="text" name="jokoIzena">
-        Deskripzioa: <input type="text" name="deskripzioa">
-        Prezioa: <input type="int" name="prezioa" pattern="[0-9]+" required title = "Sartu zenbakia.">
-        Post-aern autorea:<select name="author" id="author">
-            {% for author in authors %}
-            <option value="{{author.id }}">{{ author.izenAbizenak }}</option>
-            {% endfor %}
-        </select>
-        <button type=submit>Post-a sortu</button>
+        Autorearen izena: <input type="text" name="izenAbizenak">
+        Jaiotze data: <input type="date" name="jaiotzaData">
+        Gmail: <input type="email" name="gmail" id="gmail" pattern="[a-zA-Z0-9._%+-]+@gmail\.com" required>   
+        <button type="submit">Post-a sortu</button>
     </form>
 
-</body>
-
+</body> 
 </html>

@@ -2,26 +2,109 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href='{%static "css/blog.css" %}'>
+    <link rel="stylesheet" href='{%static "css/blog.css" %}'>
     <title>Sartu datu berriak</title>
+    <style>
+        /* Reset de estilos para eliminar márgenes y espaciado predeterminado */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo del fondo de la página */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo del encabezado principal */
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        /* Estilo del formulario */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo de etiquetas de formulario */
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* Estilo de campos de entrada de formulario */
+        form input[type="text"],
+        form input[type="int"],
+        form input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Estilo del botón de envío del formulario */
+        form button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* Cambio de color del botón al pasar el cursor por encima */
+        form button[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
+
 <body>
-    <center><h1>Sartu datu berriak</h1></center>
+    <center>
+        <h1>Sartu datu berriak</h1>
+    </center>
     <br>
 
-    
+
     <form action="/aldatupost/{{posta.id}}/" method="post">
         {% csrf_token %}
         Post-aren izenbrua: <input type="text" name="jokoIzena" value="{{posta.jokoIzena}} ">
         Post-aren deskripzioa: <input type="text" name="deskripzioa" value="{{posta.deskripzioa}}">
         Post-aren prezioa: <input type="int" name="prezioa" value="{{posta.prezioa}}">
-        Post-aren prezioa: <input type="int" name="author" value="{{posta.author}}">
-        <button type = submit>Post-a sortu</button>
+        Post-aern autorea:<select name="author" id="author">
+            {% for author in authors %}
+            <option value="{{author.id }}">{{ author.izenAbizenak }}</option>
+            {% endfor %}
+        </select>
+        <button type=submit>Post-a sortu</button>
     </form>
-    
+
 </body>
+
 </html>
