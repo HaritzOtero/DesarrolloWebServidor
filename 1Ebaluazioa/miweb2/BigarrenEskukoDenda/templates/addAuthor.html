@@ -84,8 +84,8 @@ form button[type="submit"]:hover {
     
     <form action="addpostAuthor/" method="post">
         {% csrf_token %}
-        Autorearen izena: <input type="text" name="izenAbizenak" pattern="[A-Za-z]+" required = "Sartu izena letrekin bakarrik.">
-        Jaiotze data: <input type="date" name="jaiotzaData">
+        Autorearen izena: <input type="text" name="izenAbizenak" pattern="^[A-Za-z ]+$" required>
+        Jaiotze data: <input type="date" name="jaiotzaData" requiered title= "Bete hau">
         Gmail: <input type="email" name="gmail" id="gmail" pattern="[a-zA-Z0-9._%+-]+@gmail\.com" required title="Sartu gmail baliogarria">
 
         <button type = submit>Post-a sortu</button>
@@ -93,3 +93,4 @@ form button[type="submit"]:hover {
     
 </body>
 </html>
+
